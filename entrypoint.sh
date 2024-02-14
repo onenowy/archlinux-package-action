@@ -10,7 +10,7 @@ cd $HOME
 mkdir gh-action
 cd gh-action
 cp -rfv "$GITHUB_WORKSPACE"/.git ./
-cp -fv "$WORKPATH"/* ./
+cp -rfv "$WORKPATH"/* ./
 echo "::endgroup::"
 
 # Update archlinux-keyring
