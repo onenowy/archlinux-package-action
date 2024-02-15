@@ -47,6 +47,10 @@ inputs:
     description: 'Copy generated package'
     default: 'false'
     required: false
+  repopath:
+    description: 'Path for repository with github'
+    default: ''
+    required: false
 
 runs:
   using: 'docker'
@@ -62,3 +66,4 @@ runs:
     - ${{ inputs.aur }}
     - ${{ inputs.update_archlinux_keyring }}
     - ${{ inputs.pkgcopy }}
+    - ${{ inputs.repopath }}
