@@ -78,8 +78,13 @@ echo "::group::Copying files from $HOME/gh-action to $WORKPATH"
 sudo cp -fv PKGBUILD "$WORKPATH"/PKGBUILD
 if [[ $INPUT_PKGCOPY == true ]]; then
     sudo cp -fv *.tar.zst "$WORKPATH"/
-if
+fi
 if [[ -e .SRCINFO ]]; then
     sudo cp -fv .SRCINFO "$WORKPATH"/.SRCINFO
+fi
+if [[ -n $INPUT_REPOPATH ]]; then
+    REPOPATH=$GITHUB_WORKSPACE/$INPUT_REPOPATH
+    sudo cp -fv *.pkg.tar.zst "$REPOPATH"/
+    repo-add "$REPOPATH"/repo.db.tar.gz "$REPOPATH"/*.pkg.tar.zst
 fi
 echo "::endgroup::"
