@@ -3,6 +3,8 @@ FROM docker.io/library/archlinux:base-devel
 
 # Install dependencies
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
+RUN sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
+RUN cat /etc/makepkg.conf
 
 # Setup user
 RUN useradd -m builder && \
@@ -18,8 +20,6 @@ RUN cd paru-bin && makepkg -si --noconfirm
 COPY LICENSE README.md /
 COPY entrypoint.sh /entrypoint.sh
 
-RUN sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
-RUN cat /etc/makepkg.conf
 
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
