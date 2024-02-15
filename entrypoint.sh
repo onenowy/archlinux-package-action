@@ -76,6 +76,9 @@ fi
 
 echo "::group::Copying files from $HOME/gh-action to $WORKPATH"
 sudo cp -fv PKGBUILD "$WORKPATH"/PKGBUILD
+if [[ $INPUT_PKGCOPY == true ]]; then
+    sudo cp -fv *.tar.zst "$WORKPATH"/
+if
 if [[ -e .SRCINFO ]]; then
     sudo cp -fv .SRCINFO "$WORKPATH"/.SRCINFO
 fi
