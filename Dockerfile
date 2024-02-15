@@ -18,5 +18,8 @@ RUN cd paru-bin && makepkg -si --noconfirm
 COPY LICENSE README.md /
 COPY entrypoint.sh /entrypoint.sh
 
+RUN sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
+RUN cat /etc/makepkg.conf
+
 # Set entrypoint
 ENTRYPOINT ["/entrypoint.sh"]
