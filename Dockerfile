@@ -12,8 +12,8 @@ WORKDIR /home/builder
 USER builder
 
 # Install paru
-RUN git clone https://aur.archlinux.org/paru-bin.git
-RUN cd paru-bin && makepkg -si --noconfirm
+#RUN git clone https://aur.archlinux.org/paru-bin.git
+#RUN cd paru-bin && makepkg -si --noconfirm
 
 # Copy files
 COPY LICENSE README.md /
