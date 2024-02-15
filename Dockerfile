@@ -4,7 +4,6 @@ FROM docker.io/library/archlinux:base-devel
 # Install dependencies
 RUN pacman -Syu --needed --noconfirm pacman-contrib namcap git
 RUN sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
-RUN cat /etc/makepkg.conf
 
 # Setup user
 RUN useradd -m builder && \
