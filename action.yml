@@ -43,6 +43,10 @@ inputs:
     description: 'Update archlinux-keyring'
     default: 'true'
     required: false
+  pkgcopy:
+    description: 'Copy generated package'
+    default: 'false'
+    required: false
 
 runs:
   using: 'docker'
@@ -57,3 +61,4 @@ runs:
     - ${{ inputs.namcap }}
     - ${{ inputs.aur }}
     - ${{ inputs.update_archlinux_keyring }}
+    - ${{ inputs.pkgcopy }}
