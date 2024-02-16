@@ -85,6 +85,6 @@ fi
 if [[ -n $INPUT_REPOPATH ]]; then
     REPOPATH=$GITHUB_WORKSPACE/$INPUT_REPOPATH
     sudo cp -fv *.pkg.tar.zst "$REPOPATH"/
-    sudo repo-add -n "$REPOPATH"/repo.db.tar.gz "$REPOPATH"/*.pkg.tar.zst
+    sudo repo-add -n "$REPOPATH"/"$INPUT_REPONAME".db.tar.gz "$REPOPATH"/*.pkg.tar.zst
 fi
 echo "::endgroup::"
