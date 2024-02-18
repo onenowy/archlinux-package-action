@@ -14,7 +14,7 @@ cp -rfv "$WORKPATH"/* ./
 echo "::endgroup::"
 
 # Update archlinux-keyring
-if [[ $INPUT_ARCHLINUX_KEYRING == true ]]; then
+if [[ $INPUT_UPDATE_ARCHLINUX_KEYRING == true ]]; then
     echo "::group::Updating archlinux-keyring"
     pacman -S archlinux-keyring
     echo "::endgroup::"
@@ -84,6 +84,11 @@ if [[ -e .SRCINFO ]]; then
 fi
 if [[ -n $INPUT_REPOPATH ]]; then
     REPOPATH=$GITHUB_WORKSPACE/$INPUT_REPOPATH
+    if [[ -n $INPUT_BACKUP_OLD_REPO ]]; then
+        mkdir -p "$REPOPATH"-old
+        sudo cp -fv "$REPOPATH"/*.pkg.tar.zst "$REPOPATH"-old/
+    fi
+    sudo rm -rf "$REPOPATH"/*
     sudo cp -fv *.pkg.tar.zst "$REPOPATH"/
     sudo repo-add "$REPOPATH"/"$INPUT_REPONAME".db.tar.gz "$REPOPATH"/*.pkg.tar.zst
 fi
