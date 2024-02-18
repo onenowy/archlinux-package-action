@@ -84,7 +84,7 @@ if [[ -e .SRCINFO ]]; then
 fi
 if [[ -n $INPUT_REPOPATH ]]; then
     REPOPATH=$GITHUB_WORKSPACE/$INPUT_REPOPATH
-    if [[ $INPUT_BACKUP_OLD_REPO == true ]]; then
+    if [[ $INPUT_BACKUP_OLD_REPO == true && ls "$REPOPATH"/*.pkg.tar.zst &>/dev/null ]]; then
         sudo mkdir -p "$REPOPATH"-old
         sudo cp -fv "$REPOPATH"/*.pkg.tar.zst "$REPOPATH"-old/
     fi
