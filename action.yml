@@ -55,6 +55,10 @@ inputs:
     description: 'Path for repository with github'
     default: 'repo'
     required: false
+  backup_old_repo:
+    description: 'backup files in old repo'
+    default: 'false'
+    required: false
 
 runs:
   using: 'docker'
@@ -72,3 +76,4 @@ runs:
     - ${{ inputs.pkgcopy }}
     - ${{ inputs.repopath }}
     - ${{ inputs.reponame }}
+    - ${{ inputs.backup_old_repo }}
