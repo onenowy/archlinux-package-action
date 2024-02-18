@@ -85,7 +85,7 @@ fi
 if [[ -n $INPUT_REPOPATH ]]; then
     REPOPATH=$GITHUB_WORKSPACE/$INPUT_REPOPATH
     if [[ $INPUT_BACKUP_OLD_REPO == true ]]; then
-        mkdir -p "$REPOPATH"-old
+        sudo mkdir -p "$REPOPATH"-old
         sudo cp -fv "$REPOPATH"/*.pkg.tar.zst "$REPOPATH"-old/
     fi
     sudo rm -rf "$REPOPATH"/*
