@@ -41,7 +41,7 @@ inputs:
     required: false
   update_archlinux_keyring:
     description: 'Update archlinux-keyring'
-    default: 'true'
+    default: 'false'
     required: false
   pkgcopy:
     description: 'Copy generated package'
