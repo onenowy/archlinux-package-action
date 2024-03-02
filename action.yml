@@ -43,10 +43,6 @@ inputs:
     description: 'Update archlinux-keyring'
     default: 'false'
     required: false
-  pkgcopy:
-    description: 'Copy generated package'
-    default: 'false'
-    required: false
   repopath:
     description: 'Path for repository with github'
     default: ''
@@ -54,10 +50,6 @@ inputs:
   reponame:
     description: 'Path for repository with github'
     default: 'repo'
-    required: false
-  backup_old_repo:
-    description: 'backup files in old repo'
-    default: 'false'
     required: false
 
 runs:
@@ -73,7 +65,5 @@ runs:
     - ${{ inputs.namcap }}
     - ${{ inputs.aur }}
     - ${{ inputs.update_archlinux_keyring }}
-    - ${{ inputs.pkgcopy }}
     - ${{ inputs.repopath }}
     - ${{ inputs.reponame }}
-    - ${{ inputs.backup_old_repo }}
