@@ -81,7 +81,7 @@ if [[ -e .SRCINFO ]]; then
 fi
 if [[ -n $INPUT_REPOPATH ]]; then
     REPOPATH=$GITHUB_WORKSPACE/$INPUT_REPOPATH
-    sudo rm -rf "$REPOPATH"/*
+    sudo mkdir -p "$REPOPATH"
     sudo cp -fv *.pkg.tar.zst "$REPOPATH"/
     sudo repo-add "$REPOPATH"/"$INPUT_REPONAME".db.tar.gz "$REPOPATH"/*.pkg.tar.zst
 fi
